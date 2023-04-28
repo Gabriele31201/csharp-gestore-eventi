@@ -10,40 +10,51 @@ namespace GestoreEventi
     {
         //attributes
         private string Title;
-        private string Date;
+        private DateTime Date;
         private int MaxCapientEvent;
         private int NumberOfSeatBooked;
 
         //constructor
-        public Evento(string Title, string Date, int MaxCapientEvent, int NumberOfSeatBooked) 
+        public Evento(string Title, string Date, int MaxCapientEvent) 
         {
             this.Title = Title;
-            this.Date = Date;
+            this.Date = DateTime.Parse(Date);
             this.MaxCapientEvent = MaxCapientEvent;
-            this.NumberOfSeatBooked = NumberOfSeatBooked;
+            NumberOfSeatBooked = 0;
+        }
+
+        public Evento(string Title, string Date, int MaxCapientEvent, int AlreadyBookedSeats)
+        {
+            this.Title = Title;
+            this.Date = DateTime.Parse(Date);
+            this.MaxCapientEvent = MaxCapientEvent;
+           
+            if(...)
+                    this.NumberOfSeatBooked = AlreadyBookedSeats;
         }
 
         //getters
-         public string GetTItle()
+        public string GetTItle()
         {
             return this.Title;
         }
 
         public string GetDate() 
         { 
-            return this.Date; 
+            return this.Date.ToString("dd/MM/yyyy"); 
         }
 
         // setters
 
-        public void SetMaxCapientEvent (int MaxCapientEvent)
+        // methods
+        public void BookSeats(int seatsToBook)
         {
-            this.MaxCapientEvent = MaxCapientEvent;
-        }
-
-        public void SetNumberOfSeatBooked (int NumberOfSeatBooked)
-        {
-            this.NumberOfSeatBooked= NumberOfSeatBooked;
+            if (MaxCapientEvent < NumberOfSeatBooked)
+                this.NumberOfSeatBooked += seatsToBook;
+            else
+            {
+                Console.WriteLine("Non ci sono posti disponibili");
+            }
         }
     }
 }
