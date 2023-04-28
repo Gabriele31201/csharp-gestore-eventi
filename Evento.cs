@@ -29,8 +29,12 @@ namespace GestoreEventi
             this.Date = DateTime.Parse(Date);
             this.MaxCapientEvent = MaxCapientEvent;
            
-            if(...)
+            if(MaxCapientEvent == NumberOfSeatBooked)
                     this.NumberOfSeatBooked = AlreadyBookedSeats;
+            else
+            {
+                Console.WriteLine("I posti disponibili sono finiti");
+            }
         }
 
         //getters
@@ -53,8 +57,14 @@ namespace GestoreEventi
                 this.NumberOfSeatBooked += seatsToBook;
             else
             {
-                Console.WriteLine("Non ci sono posti disponibili");
+                Console.WriteLine("Abbiamo raggiunto la capienza massima");
             }
+        }
+
+        public void CancelSeats (int seatsToBook) 
+        {
+            if (MaxCapientEvent > NumberOfSeatBooked)
+                this.NumberOfSeatBooked -= seatsToBook;
         }
     }
 }
