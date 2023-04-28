@@ -22,5 +22,28 @@ namespace GestoreEventi
             this.MaxCapientEvent = MaxCapientEvent;
             this.NumberOfSeatBooked = NumberOfSeatBooked;
         }
+
+        //getters
+         public string GetTItle()
+        {
+            return this.Title;
+        }
+
+        public string GetDate() 
+        { 
+            return this.Date; 
+        }
+
+        // setters
+
+        public void SetMaxCapientEvent (int MaxCapientEvent)
+        {
+            this.MaxCapientEvent = MaxCapientEvent;
+        }
+
+        public void SetNumberOfSeatBooked (int NumberOfSeatBooked)
+        {
+            this.NumberOfSeatBooked= NumberOfSeatBooked;
+        }
     }
 }
